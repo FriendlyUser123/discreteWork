@@ -18,17 +18,17 @@ public class Deck {
         Collections.shuffle(cards);
     }
 
-    public void deal(int count) {
+    public Hand deal(Hand hand, int count) {
         if (cards.isEmpty()) {
             return null;
         }
 
-       
-        for(int i = 0; i < count; i++){
-            Hand.cards.add(cards[i]);
+        for (int i = 0; i < count; i++) {
+            if (!cards.isEmpty()) {
+                hand.addCard(cards.remove(0));
+            }
         }
-
-        
+        return hand;
     }
 
     public int size() {
